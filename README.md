@@ -3,3 +3,5 @@ Lighter Core is not a template of Wordpress but with it
  
  It is a pack consist a lot of functions with some feature available such as:
  display menu with description, display image thumbnail for taxonomy
+ 
+ 

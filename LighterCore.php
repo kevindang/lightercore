@@ -22,6 +22,8 @@ class Lighter {
 		require_if_theme_supports ( 'lc_menus', trailingslashit ( LC_EXT_PATH ) . "lighter_menu.php" );
 		// load lighter taxonomies thumbnail 
 		require_if_theme_supports('lc_taxonomies_thumbnail', trailingslashit(LC_EXT_PATH)."lighterTaxonomiesThumbnail.php");
+		
+		require_if_theme_supports('lc_theme_settings', trailingslashit(LC_THEME_OPT_PATH)."mainPage.php");
 	}
 	public function define() {
 		// define lighter core version
@@ -42,6 +44,7 @@ class Lighter {
 		define ( "LC_ASSETS_URI", trailingslashit ( LC_URI ) . "assets" );
 		//define js URI
 		define ( "LC_JS_URI", trailingslashit ( LC_ASSETS_URI ) . "js" );
-		define ( "LC_ASSETS_URI", trailingslashit ( LC_URI ) . "assets" );
+		//define theme options path
+		define ( "LC_THEME_OPT_PATH", trailingslashit ( LC_PATH ) . "themeOpts" );
 	}
 }

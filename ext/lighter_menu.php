@@ -23,7 +23,7 @@ function lc_add_menu_locations() {
 	}
 }
 add_action ( 'after_setup_theme', 'lc_add_menu_locations' );
-class LCWalkerMenuWithDescription extends Walker_Nav_Menu implements LTSingle {
+class LCWalkerMenuWithDescription extends Walker_Nav_Menu implements LCSingle {
 	private static $instance;
 	public static function getInstance() {
 		if (static::$instance == null) {
