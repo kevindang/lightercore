@@ -76,7 +76,10 @@ function lc_get_icon_url($screenName = "", $size = 16) {
 	}
 }
 
-
+function lc_get_default_taxonomy_thumbnail_image($termName){
+	$opts = (array) get_option("lc_taxonomies_settings");
+	return isset($opts['thumb'][$termName])?$opts['thumb'][$termName]:null;
+}
 
 
 

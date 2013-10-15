@@ -19,7 +19,8 @@ class Lighter {
 	}
 	public function loadExtensions() {
 		// load lighter menu extension
-		require_if_theme_supports ( 'lc_menus', trailingslashit ( LC_EXT_PATH ) . "lighter_menu.php" );
+		require_if_theme_supports ( 'lc_menus', trailingslashit ( LC_EXT_PATH ) . "lighterMenu.php" );
+		require_if_theme_supports('lc_nav_menu_thumbnails', trailingslashit ( LC_EXT_PATH ) . "navMenuThumbnail.php" );
 		// load lighter taxonomies thumbnail
 		require_if_theme_supports ( 'lc_taxonomies_thumbnail', trailingslashit ( LC_EXT_PATH ) . "lighterTaxonomiesThumbnail.php" );
 		// load admin modules

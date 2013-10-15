@@ -1,4 +1,11 @@
 <?php
+global $sections;
+$sections = apply_filters ( 'lc_theme_setting_sections', array (
+		'header'=>'Header Options',
+		'main'=>'Main Content Options',
+		'footer'=>'Footer Options',
+		'taxonomies'=>'Taxonomies Options',
+) );
 /**
  * Add theme settings options page and subpage
  */
@@ -7,13 +14,18 @@ function lc_add_admin_page() {
 }
 add_action ( 'admin_menu', 'lc_add_admin_page', 2 );
 function lc_display_theme_settings_page() {
+	$pages = get_theme_support ( 'lc_theme_settings' );
+	global $sections;
 	?>
 <div class="wrap">
 	<img src="<?php echo lc_get_icon_url('lc_theme_settings',32)?>"
 		alt="Lighter Core Theme Settings" class="icon32" />
 	<h2><?php echo __("Lighter Core Theme Setting","lc_admin");?></h2>
-	<form action="options" method="post">
+	<form action="options.php" method="post">
 	<?php
+	foreach($sections as $key =>$val){
+		settings_fields('lc_'.$key."_settings");
+	}
 	do_settings_sections ( 'lc_theme_settings_page' );
 	?>
 	<?php submit_button(__('Update Settings','lc_admin')); ?>
@@ -26,11 +38,7 @@ function lc_display_theme_settings_page() {
  */
 function lc_register_theme_settings_section() {
 	$pages = get_theme_support ( 'lc_theme_settings' );
-	$sections = apply_filters ( 'lc_theme_setting_sections', array (
-			'header'=>'Header Options',
-			'main'=>'Main Content Options',
-			'footer'=>'Footer Options'
-	) );
+	global $sections;
 	if (is_array ( $pages )) {
 		foreach ( $pages [0] as $page ) {
 			if (array_key_exists ( $page, $sections )) {
@@ -48,5 +56,8 @@ function lc_display_main_section() {
 	echo '<p class="description">' . __ ( "All settings for main layout content", "lc_admin" ) . '</p>';
 }
 function lc_display_footer_section(){
-echo '<p class="description">' . __ ( "All settings for footer layout content", "lc_admin" ) . '</p>';
+	echo '<p class="description">' . __ ( "All settings for footer layout content", "lc_admin" ) . '</p>';
+}
+function lc_display_taxonomies_section(){
+	echo '<p class="description">' . __ ( "All settings for taxonomies content", "lc_admin" ) . '</p>';
 }
